@@ -27,7 +27,7 @@ window.CCTools = (function(game) {
 
         howLongNextObjectLevel: function(idObj) {
             if(idObj >= 0 || idObj <= 9)
-                return this.reach(this.Game.ObjectsById[9].price);
+                return this.howLong(this.Game.ObjectsById[9].price);
             else
                 return null;
         },
@@ -37,7 +37,23 @@ window.CCTools = (function(game) {
             var p = 1.15;
             var n = level - this.Game.ObjectsById[idObj].bought;
 
-            return this.reach(x*(1+p*((1-Math.pow(p, n))/(1-p))));
+            return this.howLong(x*(1+p*((1-Math.pow(p, n))/(1-p))));
+        },
+
+        calculatePrestige: function() {
+            var cookies = this.Game.cookiesReset + this.Game.cookiesEarned;
+            var prestige = cookies/1000000000000;
+            var chips = Math.max(0,Math.floor((-1+Math.pow(1+8*prestige,0.5))/2));
+            return chips;
+        },
+
+        chipsCost: function(nb) {
+            return (Math.pow(2*nb+1, 2)-1)/8*1000000000000;
+        },
+
+        nextChipCost: function() {
+            var chips = this.calculatePrestige() + 1;
+            return this.chipsCost(chips)*1000000000000-this.Game.cookiesReset;
         }
     };
 
