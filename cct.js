@@ -53,7 +53,7 @@ window.CCTools = (function(game) {
 
         nextChipCost: function() {
             var chips = this.calculatePrestige() + 1;
-            return this.chipsCost(chips)*1000000000000-this.Game.cookiesReset;
+            return this.chipsCost(chips)-this.Game.cookiesReset;
         }
     };
 
