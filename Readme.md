@@ -5,6 +5,7 @@ Welcome to CookieClicker Tools !
 Here's some cool stuff to optimize your game !
 Cheaters leave away !!!
 
+actual version : 0.02
 
 Installation
 ------------
@@ -26,7 +27,7 @@ Documentation
 
 Changelog
 ---------
-* v0.01 : the first and actual version
+* v0.01 : the first version
 * v0.02 : added calculatePrestige, chipsCost, nextChipCost functionalities
 
 
