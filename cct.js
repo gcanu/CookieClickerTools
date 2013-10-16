@@ -17,8 +17,22 @@ window.CCTools = (function(game) {
         // variables
         Game: game,
 
-        nextGoldenCookie: function() {
-            return new Date(Date.now()+(this.Game.goldenCookie.delay/this.Game.fps*1000));
+        goldenCookieWatchInterval: null,
+
+        startGoldenCookieWatch: function() {
+            if(!this.goldenCookieWatchInterval)
+                goldenCookieWatchInterval = setInterval(this.goldenCookieWatch, this.Game.T%(this.Game.fps));
+        },
+
+        stopGoldenCookieWatch: function() {
+            clearInterval(this.goldenCookieWatchInterval);
+            this.goldenCookieWatchInterval = null;
+        },
+
+        goldenCookieWatch: function() {
+            var c = "\u229b";
+            if(this.Game.goldenCookie.life > 0 && document.title.indexOf(c) === -1)
+                document.title = c + " " + document.title;
         },
 
         howLong: function(desired) {
