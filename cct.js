@@ -68,6 +68,20 @@ window.CCTools = (function(game) {
         nextChipCost: function() {
             var chips = this.calculatePrestige() + 1;
             return this.chipsCost(chips)-this.Game.cookiesReset;
+        },
+
+        unlockUncannyClicker: function() {
+            var n = 0;
+            while(n < 6) {
+                this.Game.ClickCookie();
+                console.log(this.Game.autoclickerDetected);
+                n++;
+
+                // wait for the good moment to reclick
+                while(Date.now()-this.Game.lastClick<5) {
+                    // do nothing
+                }
+            }
         }
     };
 

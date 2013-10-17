@@ -5,7 +5,7 @@ Welcome to CookieClicker Tools !
 Here's some cool stuff to optimize your game !
 Cheaters leave away !!!
 
-actual version : 0.03
+actual version : 0.04
 CookieClicker version supported : v1.0383
 
 Do not try to use CCTools on CC's previous versions, some (a lot ?) functions may not work.
@@ -28,6 +28,7 @@ Documentation
 * CCTools.nextChipCost() : same as previous, but it calculates for the next chip
 * CCTools.startGoldenCookieWatch() : start the golden cookie watcher. When a golden cookie appear, a cookie is displayed in title.
 * CCTools.stopGoldenCookieWatch() : stop the golden cookie watcher
+* CCTools.unlockUncannyClicker() : unlock the Uncanny Clicker achievement by clicking as fast as double bass pedal drum roll \m/ !
 
 
 Changelog
@@ -35,6 +36,7 @@ Changelog
 * v0.01 : the first version
 * v0.02 : added calculatePrestige, chipsCost, nextChipCost functionalities
 * v0.03 : added a golden cookie watcher, removed nextGoldenCookie
+* v0.04 : added a Uncanny Clicker achievement unlocker
 
 Updates
 -------
