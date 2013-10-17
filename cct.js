@@ -40,8 +40,8 @@ window.CCTools = (function(game) {
         },
 
         howLongNextObjectLevel: function(idObj) {
-            if(idObj >= 0 || idObj <= 9)
-                return this.howLong(this.Game.ObjectsById[9].price);
+            if(idObj >= 0 && idObj <= 9)
+                return this.howLong(this.Game.ObjectsById[idObj].price);
             else
                 return null;
         },
