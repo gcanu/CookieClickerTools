@@ -16,17 +16,25 @@ window.CCTools = (function(game) {
 
         // variables
         Game: game,
+        me: null,
 
         goldenCookieWatchInterval: null,
 
+        // buy auto
+        buyAnyObjectWhenReadyInterval: null,
+        nextObject: null,
+
+
         startGoldenCookieWatch: function() {
             if(!this.goldenCookieWatchInterval)
-                goldenCookieWatchInterval = setInterval(this.goldenCookieWatch, this.Game.T%(this.Game.fps));
+                this.goldenCookieWatchInterval = setInterval(this.goldenCookieWatch, 1000);
         },
 
         stopGoldenCookieWatch: function() {
-            clearInterval(this.goldenCookieWatchInterval);
-            this.goldenCookieWatchInterval = null;
+            if(this.goldenCookieWatchInterval) {
+                clearInterval(this.goldenCookieWatchInterval);
+                this.goldenCookieWatchInterval = null;
+            }
         },
 
         goldenCookieWatch: function() {
@@ -82,7 +90,56 @@ window.CCTools = (function(game) {
                     // do nothing
                 }
             }
-        }
+        },
+
+        startBuyAnyObjectWhenReady: function() {
+            if(!this.buyAnyObjectWhenReadyInterval) {
+                CCTools.me = this;
+                this.buyAnyObjectWhenReadyInterval = setInterval(this.buyAnyObjectWhenReady, 1000);
+            }
+        },
+
+        stopBuyAnyObjectWhenReady: function() {
+            if(this.buyAnyObjectWhenReadyInterval) {
+                clearInterval(this.buyAnyObjectWhenReadyInterval);
+                this.buyAnyObjectWhenReadyInterval = null;
+            }
+        },
+
+        buyAnyObjectWhenReady: function() {
+            var me = CCTools.me;
+            var rawList = me.Game.UpgradesInStore.concat(me.Game.ObjectsById);
+
+            if(me.nextObject) {
+                if(me.Game.cookies >= me.nextObject.price) {
+                    me.nextObject.obj.buy();
+                    me.nextObject = null;
+                }
+            }
+
+            if(!me.nextObject) {
+                me.nextObject = {
+                    obj: null,
+                    price: Infinity
+                };
+
+                for(var i = 0, ii = rawList.length; i < ii; i++) {
+                    if(rawList[i] instanceof Game.Object) {
+                        if(rawList[i].price < me.nextObject.price) {
+                            me.nextObject.obj = rawList[i];
+                            me.nextObject.price = rawList[i].price;
+                        }
+                    }
+
+                    if(rawList[i] instanceof Game.Upgrade) {
+                        if(rawList[i].basePrice < me.nextObject.price) {
+                            me.nextObject.obj = rawList[i];
+                            me.nextObject.price = rawList[i].basePrice;
+                        }
+                    }
+                }
+            }
+        },
     };
 
 })(Game);

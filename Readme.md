@@ -2,10 +2,10 @@ CookieClicker Tools
 ===================
 
 Welcome to CookieClicker Tools !
-Here's some cool stuff to optimize your game !
+Here's some cool stuff to OPTIMIZE your game !
 Cheaters leave away !!!
 
-actual version : 0.04
+actual version : 0.05
 CookieClicker version supported : v1.0383
 
 Do not try to use CCTools on CC's previous versions, some (a lot ?) functions may not work.
@@ -29,6 +29,7 @@ Documentation
 * CCTools.startGoldenCookieWatch() : start the golden cookie watcher. When a golden cookie appear, a cookie is displayed in title.
 * CCTools.stopGoldenCookieWatch() : stop the golden cookie watcher
 * CCTools.unlockUncannyClicker() : unlock the Uncanny Clicker achievement by clicking as fast as double bass pedal drum roll \m/ !
+* CCTools.startBuyAnyObjectWhenReady() : start the purchases optimizer, each time you reach a sufficient amount of cookies to buy an upgrade or an object (the cheaper one), it will be automatically purchased
 
 
 Changelog
@@ -37,6 +38,7 @@ Changelog
 * v0.02 : added calculatePrestige, chipsCost, nextChipCost functionalities
 * v0.03 : added a golden cookie watcher, removed nextGoldenCookie
 * v0.04 : added a Uncanny Clicker achievement unlocker
+* v0.05 : added a purchase optimizer, fixed some bugs
 
 Updates
 -------
